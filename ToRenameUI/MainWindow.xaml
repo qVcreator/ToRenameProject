@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToRenameUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="465" Width="821">
     <Grid>
         <TabControl>
             <TabItem Header="Главная">
@@ -17,11 +17,11 @@
                     <Button x:Name="ButtonChooseSource" Content=". . ." HorizontalAlignment="Left" Margin="328,59,0,0" VerticalAlignment="Top" Height="23" Width="35"/>
                     <Button x:Name="ButtonSaveIn" Content=". . ." HorizontalAlignment="Left" Margin="328,132,0,0" VerticalAlignment="Top" Height="24" Width="35"/>
                     <DataGrid x:Name="DataGridOptionList" HorizontalAlignment="Left" Height="197" Margin="10,199,0,0" VerticalAlignment="Top" Width="353" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                    <DataGrid x:Name="DataGridToDoList" HorizontalAlignment="Left" Height="197" Margin="437,199,0,0" VerticalAlignment="Top" Width="353                   " d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                    <DataGrid x:Name="DataGridToDoList" HorizontalAlignment="Left" Height="197" Margin="431,199,0,0" VerticalAlignment="Top" Width="353                   " d:ItemsSource="{d:SampleData ItemCount=5}"/>
                     <Button x:Name="ButtonAddOption" Content="&gt;" HorizontalAlignment="Left" Margin="383,242,0,0" VerticalAlignment="Top" Width="34"/>
                     <Button x:Name="ButtonRemoveOption" Content="&lt;" HorizontalAlignment="Left" Margin="383,292,0,0" VerticalAlignment="Top" Width="34"/>
                     <Label Content="Список возможностей" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Задействовать" HorizontalAlignment="Left" Margin="437,168,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Задействовать" HorizontalAlignment="Left" Margin="431,168,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="ButtonLaunch" Content="Пуск" HorizontalAlignment="Left" Margin="694,132,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
                 </Grid>
             </TabItem>
