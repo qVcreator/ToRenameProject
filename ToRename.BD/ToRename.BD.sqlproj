@@ -66,6 +66,6 @@
     <Build Include="dbo\Tables\Option.sql" />
     <Build Include="dbo\Tables\Action.sql" />
     <Build Include="Stored Procedures\OptionAdd.sql" />
-    <Build Include="Stored Procedures\OptionGetAllInfo.sql" />
+    <Build Include="Stored Procedures\ActionGetAllInfo.sql" />
   </ItemGroup>
 </Project>

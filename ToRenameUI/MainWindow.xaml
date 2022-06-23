@@ -30,12 +30,14 @@
                     <TextBox x:Name="TextBoxOptionFrom" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Height="23"/>
                     <TextBox x:Name="TextBoxOptionTo" HorizontalAlignment="Left" Margin="229,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Height="23"/>
                     <ComboBox x:Name="ComboBoxAddOption" HorizontalAlignment="Left" Margin="431,41,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-                    <Button x:Name="ButtonAddChangeOption" Content="Добавить" HorizontalAlignment="Left" Margin="634,40,0,0" VerticalAlignment="Top" Height="23" Width="150"/>
+                    <Button x:Name="ButtonAddChangeOption" Content="Добавить" HorizontalAlignment="Left" Margin="612,70,0,0" VerticalAlignment="Top" Height="23" Width="150"/>
                     <DataGrid x:Name="DataGridTabOptionOptionList" HorizontalAlignment="Left" Height="242" Margin="10,154,0,0" VerticalAlignment="Top" Width="343" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                     <DataGrid x:Name="DataGridDeleteOptionList" HorizontalAlignment="Left" Height="242" Margin="441,154,0,0" VerticalAlignment="Top" Width="343" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                     <Button x:Name="ButtonAddToDeleteList" Content=">" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Width="34"/>
                     <Button x:Name="ButtonFromRemoveList" Content="&lt;" HorizontalAlignment="Center" Margin="0,255,0,0" VerticalAlignment="Top" Width="34"/>
                     <Button x:Name="ButtonToDelete" Content="Удалить" HorizontalAlignment="Left" Margin="689,124,0,0" VerticalAlignment="Top" Height="24" Width="95"/>
+                    <DatePicker x:Name="DatePickerStart" HorizontalAlignment="Left" Margin="431,69,0,0" VerticalAlignment="Top" Width="150"/>
+                    <DatePicker x:Name="DayePickerEnd" HorizontalAlignment="Left" Margin="431,98,0,0" VerticalAlignment="Top" Width="150"/>
                 </Grid>
             </TabItem>
         </TabControl>
