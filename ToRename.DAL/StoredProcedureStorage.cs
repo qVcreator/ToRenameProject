@@ -2,6 +2,6 @@
 {
     public class StoredProcedureStorage
     {
-        public const string GetAllInfoAction = "ActionAllInfo";
+        public const string GetAllInfoAction = "ActionGetAllInfo";
     }
 }

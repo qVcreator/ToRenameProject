@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[ActionAllInfo]
+﻿CREATE PROCEDURE [dbo].[ActionGetAllInfo]
 AS
 BEGIN
 

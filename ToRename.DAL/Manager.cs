@@ -25,6 +25,7 @@ namespace ToRename.DAL
                         ActionAllInfoDto crnt = Action;
 
                         crnt.Option = Option;
+                        result.Add(crnt);
 
                         return crnt;
                     },

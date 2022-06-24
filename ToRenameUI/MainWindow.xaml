@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToRenameUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="465" Width="821">
+        Title="MainWindow" Height="465" Width="821" Initialized="Window_Initialized">
     <Grid>
         <TabControl>
             <TabItem Header="Главная">
@@ -16,10 +16,31 @@
                     <Label Content="Сохранить в" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="82"/>
                     <Button x:Name="ButtonChooseSource" Content=". . ." HorizontalAlignment="Left" Margin="328,59,0,0" VerticalAlignment="Top" Height="23" Width="35"/>
                     <Button x:Name="ButtonSaveIn" Content=". . ." HorizontalAlignment="Left" Margin="328,132,0,0" VerticalAlignment="Top" Height="24" Width="35"/>
-                    <DataGrid x:Name="DataGridOptionList" HorizontalAlignment="Left" Height="197" Margin="10,199,0,0" VerticalAlignment="Top" Width="353" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                    <DataGrid x:Name="DataGridToDoList" HorizontalAlignment="Left" Height="197" Margin="431,199,0,0" VerticalAlignment="Top" Width="353                   " d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                    <Button x:Name="ButtonAddOption" Content="&gt;" HorizontalAlignment="Left" Margin="383,242,0,0" VerticalAlignment="Top" Width="34"/>
-                    <Button x:Name="ButtonRemoveOption" Content="&lt;" HorizontalAlignment="Left" Margin="383,292,0,0" VerticalAlignment="Top" Width="34"/>
+                    <DataGrid x:Name="DataGridOptionList" HorizontalAlignment="Left" Height="197" Margin="10,199,0,0" VerticalAlignment="Top" Width="353" d:ItemsSource="{d:SampleData ItemCount=5}" GridLinesVisibility="None" FontStretch="Medium" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="До" Binding="{Binding Path=From}"   Width="110"/>
+                            <DataGridTextColumn Header="После" Binding="{Binding Path=To}"   Width="110"/>
+                            <DataGridTextColumn Header="C" Binding="{Binding  Path=StartTime}"   Width="110"/>
+                            <DataGridTextColumn Header="До" Binding="{Binding  Path=EndTime}"   Width="110"/>
+                            <DataGridTextColumn Header="Опция" Binding="{Binding  Path=Option.Name}"   Width="110"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="DataGridToDoList" HorizontalAlignment="Left" Height="197" Margin="431,199,0,0" VerticalAlignment="Top" Width="353 " d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="До" Binding="{Binding Path=From}"   Width="110"/>
+                            <DataGridTextColumn Header="После" Binding="{Binding Path=To}"   Width="110"/>
+                            <DataGridTextColumn Header="C" Binding="{Binding  Path=StartTime}"   Width="110"/>
+                            <DataGridTextColumn Header="До" Binding="{Binding  Path=EndTime}"   Width="110"/>
+                            <DataGridTextColumn Header="Опция" Binding="{Binding  Path=Option.Name}"   Width="110"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="ButtonAddOption" Content="&gt;" HorizontalAlignment="Left" Margin="383,242,0,0" VerticalAlignment="Top" Width="34" Click="ButtonAddOption_Click"/>
+                    <Popup x:Name="popupNotSelectedActionTabOne" StaysOpen="False" Placement="Mouse" MaxWidth="180" AllowsTransparency="True"  >
+                        <TextBlock TextWrapping="Wrap" Width="180" Background="LightPink" Opacity="0.8" >
+                            Выберите действие из списка возможностей
+                        </TextBlock>
+                    </Popup>
+                    <Button x:Name="ButtonRemoveOption" Content="&lt;" HorizontalAlignment="Left" Margin="383,292,0,0" VerticalAlignment="Top" Width="34" Click="ButtonRemoveOption_Click"/>
                     <Label Content="Список возможностей" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
                     <Label Content="Задействовать" HorizontalAlignment="Left" Margin="431,168,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="ButtonLaunch" Content="Пуск" HorizontalAlignment="Left" Margin="694,132,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
@@ -31,10 +52,31 @@
                     <TextBox x:Name="TextBoxOptionTo" HorizontalAlignment="Left" Margin="229,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Height="23"/>
                     <ComboBox x:Name="ComboBoxAddOption" HorizontalAlignment="Left" Margin="431,41,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
                     <Button x:Name="ButtonAddChangeOption" Content="Добавить" HorizontalAlignment="Left" Margin="612,70,0,0" VerticalAlignment="Top" Height="23" Width="150"/>
-                    <DataGrid x:Name="DataGridTabOptionOptionList" HorizontalAlignment="Left" Height="242" Margin="10,154,0,0" VerticalAlignment="Top" Width="343" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                    <DataGrid x:Name="DataGridDeleteOptionList" HorizontalAlignment="Left" Height="242" Margin="441,154,0,0" VerticalAlignment="Top" Width="343" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                    <Button x:Name="ButtonAddToDeleteList" Content=">" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Width="34"/>
-                    <Button x:Name="ButtonFromRemoveList" Content="&lt;" HorizontalAlignment="Center" Margin="0,255,0,0" VerticalAlignment="Top" Width="34"/>
+                    <DataGrid x:Name="DataGridTabOptionOptionList" HorizontalAlignment="Left" Height="242" Margin="10,154,0,0" VerticalAlignment="Top" Width="343" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="До" Binding="{Binding Path=From}"   Width="110"/>
+                            <DataGridTextColumn Header="После" Binding="{Binding Path=To}"   Width="110"/>
+                            <DataGridTextColumn Header="C" Binding="{Binding  Path=StartTime}"   Width="110"/>
+                            <DataGridTextColumn Header="До" Binding="{Binding  Path=EndTime}"   Width="110"/>
+                            <DataGridTextColumn Header="Опция" Binding="{Binding  Path=Option.Name}"   Width="110"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="DataGridDeleteOptionList" HorizontalAlignment="Left" Height="242" Margin="441,154,0,0" VerticalAlignment="Top" Width="343" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="До" Binding="{Binding Path=From}"   Width="110"/>
+                            <DataGridTextColumn Header="После" Binding="{Binding Path=To}"   Width="110"/>
+                            <DataGridTextColumn Header="C" Binding="{Binding  Path=StartTime}"   Width="110"/>
+                            <DataGridTextColumn Header="До" Binding="{Binding  Path=EndTime}"   Width="110"/>
+                            <DataGridTextColumn Header="Опция" Binding="{Binding  Path=Option.Name}"   Width="110"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="ButtonAddToDeleteList" Content=">" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Width="34" Click="ButtonAddToDeleteList_Click"/>
+                    <Popup x:Name="popupNotSelectedActionTabTwo" StaysOpen="False" Placement="Mouse" MaxWidth="180" AllowsTransparency="True"  >
+                        <TextBlock TextWrapping="Wrap" Width="180" Background="LightPink" Opacity="0.8" >
+                            Выберите действие из списка возможностей
+                        </TextBlock>
+                    </Popup>
+                    <Button x:Name="ButtonFromRemoveList" Content="&lt;" HorizontalAlignment="Center" Margin="0,255,0,0" VerticalAlignment="Top" Width="34" Click="ButtonFromRemoveList_Click"/>
                     <Button x:Name="ButtonToDelete" Content="Удалить" HorizontalAlignment="Left" Margin="689,124,0,0" VerticalAlignment="Top" Height="24" Width="95"/>
                     <DatePicker x:Name="DatePickerStart" HorizontalAlignment="Left" Margin="431,69,0,0" VerticalAlignment="Top" Width="150"/>
                     <DatePicker x:Name="DayePickerEnd" HorizontalAlignment="Left" Margin="431,98,0,0" VerticalAlignment="Top" Width="150"/>

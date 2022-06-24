@@ -8,7 +8,14 @@
 
   <ItemGroup>
     <Folder Include="InputModels\" />
-    <Folder Include="OutputModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToRename.DAL\ToRename.DAL.csproj" />
   </ItemGroup>
 
 </Project>
