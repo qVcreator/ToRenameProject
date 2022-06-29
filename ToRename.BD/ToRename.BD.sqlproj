@@ -65,7 +65,10 @@
   <ItemGroup>
     <Build Include="dbo\Tables\Option.sql" />
     <Build Include="dbo\Tables\Action.sql" />
-    <Build Include="Stored Procedures\OptionAdd.sql" />
+    <Build Include="Stored Procedures\ActionAdd.sql" />
     <Build Include="Stored Procedures\ActionGetAllInfo.sql" />
+    <Build Include="Stored Procedures\GetOptions.sql" />
+    <Build Include="Stored Procedures\GetActionAllInfoById.sql" />
+    <Build Include="Stored Procedures\DeleteAction.sql" />
   </ItemGroup>
 </Project>

@@ -1,10 +1,11 @@
-﻿CREATE PROCEDURE [dbo].[OptionAdd]
+﻿CREATE PROCEDURE [dbo].[ActionAdd]
 	@From varchar(255),
 	@To varchar(255),
-	@StartDate datetime,
-	@EndDate datetime,
+	@StartDate datetime = null,
+	@EndDate datetime = null,
 	@OptionId int,
-	@isDeleted bit = 0
+	@isDeleted bit = 0,
+	@LastId int = null
 AS
 BEGIN
 INSERT INTO dbo.[Action](
@@ -23,4 +24,6 @@ VALUES(
 	@OptionId,
 	@isDeleted
 )
+SET @LastId = SCOPE_IDENTITY();
+EXEC ActionGetAllInfoById @Id=@LastId
 END

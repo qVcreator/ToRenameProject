@@ -35,5 +35,58 @@ namespace ToRename.DAL
                 return result;
             }
         }
+
+        public List<OptionDto> GetOptions()
+        {
+            using (var connection = new SqlConnection(ServerSettings._connectionString))
+            {
+                connection.Open();
+
+                return connection.Query<OptionDto>
+                    (StoredProcedureStorage.GetOptions,
+                    commandType: System.Data.CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public ActionAllInfoDto AddAction(ActionAllInfoDto inputDto)
+        {
+            using (var connection = new SqlConnection(ServerSettings._connectionString))
+            {
+                connection.Open();
+
+                return connection.QuerySingle<ActionAllInfoDto>
+                    (StoredProcedureStorage.AddAction,
+                    commandType: System.Data.CommandType.StoredProcedure,
+                    param: new
+                    {
+                        @From = inputDto.From,
+                        @To = inputDto.To,
+                        @StartDate = inputDto.StartTime,
+                        @EndDate = inputDto.EndTime,
+                        @OptionId = inputDto.Option.Id
+                    });
+            }
+        } 
+
+        public void DeleteActionById(ActionAllInfoDto inputDto)
+        {
+            using (var connection = new SqlConnection(ServerSettings._connectionString))
+            {
+                connection.Open();
+
+                connection.Query<ActionAllInfoDto>
+                    (StoredProcedureStorage.DeleteActionById,
+                    commandType: System.Data.CommandType.StoredProcedure,
+                    param: new
+                    {
+                        @Id = inputDto.Id,
+                        @From = inputDto.From,
+                        @To = inputDto.To,
+                        @StartTime = inputDto.StartTime,
+                        @EndTime = inputDto.EndTime,
+                        @OptionId = inputDto.Option.Id
+                    });
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using ToRename.DAL.Dtos;
 using ToRename.DAL;
 using ToRename.BLL.OutputModels;
+using ToRename.BLL.InputModels;
 
 namespace ToRename.BLL
 {
@@ -23,6 +24,12 @@ namespace ToRename.BLL
                 cfg.CreateMap<OptionDto, OptionOutputModel>();
 
                 cfg.CreateMap<ActionAllInfoDto, ActionAllInfoOutputModel>();
+
+                cfg.CreateMap<ActionInfoInputModel, ActionAllInfoDto>();
+
+                cfg.CreateMap<ActionAllInfoOutputModel, ActionAllInfoDto>();
+
+                cfg.CreateMap<OptionOutputModel, OptionDto>();
             }));
         }
     }
