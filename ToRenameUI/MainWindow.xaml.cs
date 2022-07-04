@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Controls;
 using Microsoft.Win32;
 using ToRename.BLL;
 using ToRename.BLL.OutputModels;
 using ToRename.BLL.InputModels;
-
+using ToRename.BLL.Interfaces;
 
 namespace ToRenameUI
 {
     public partial class MainWindow : Window
     {
         Controller _controller;
+        IFileChanger _fileController;
         Dictionary<int, ActionAllInfoOutputModel> CheckListTabOne;
         List<ActionAllInfoOutputModel> _actionList;
         List<OptionOutputModel> _optionList;
@@ -26,7 +28,6 @@ namespace ToRenameUI
         {
             CheckListTabOne = new Dictionary<int, ActionAllInfoOutputModel>();
             _controller = new Controller();
-
             _actionList = _controller.GetEmployeeRequestAllInfo();
             _optionList = _controller.GetOptions();
 
@@ -108,7 +109,7 @@ namespace ToRenameUI
 
         private void ButtonChooseSource_Click(object sender, RoutedEventArgs e)
         {
-            ChooseFolder(TextBoxSource, new OpenFileDialog());
+            ChooseFolder(TextBoxSource, new Microsoft.Win32.OpenFileDialog());
         }
 
         private void InitializeDataGrids(List<ActionAllInfoOutputModel> source)
@@ -139,10 +140,14 @@ namespace ToRenameUI
 
         private void ButtonSaveIn_Click(object sender, RoutedEventArgs e)
         {
-            ChooseFolder(TextBoxSaveTo, new SaveFileDialog());
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                TextBoxSaveTo.Text = fbd.SelectedPath;
+            }
         }
 
-        private void ChooseFolder(TextBox textBox, FileDialog dialogWindow)
+        private void ChooseFolder(System.Windows.Controls.TextBox textBox, Microsoft.Win32.FileDialog dialogWindow)
         {
             dialogWindow.Filter = "Excel(*.xlsx;*.xls)|*.xlsx;*.xls)|Все файлы (*.*)|*.* ";
             dialogWindow.CheckFileExists = true;
@@ -182,6 +187,14 @@ namespace ToRenameUI
             DataGridTabOptionOptionList.Items.Refresh();
             DataGridOptionList.Items.Refresh();
             DataGridDeleteOptionList.Items.Clear();
+        }
+
+        private void ButtonLaunch_Click(object sender, RoutedEventArgs e)
+        {
+            _fileController = new ExcelController();
+            ActionAllInfoOutputModel[] source = new ActionAllInfoOutputModel[DataGridToDoList.Items.Count];
+            DataGridToDoList.Items.CopyTo(source,0);
+            _fileController.Rewrite(TextBoxSource.Text, source);
         }
     }
 }

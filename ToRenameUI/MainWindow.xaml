@@ -43,7 +43,7 @@
                     <Button x:Name="ButtonRemoveOption" Content="&lt;" HorizontalAlignment="Left" Margin="383,292,0,0" VerticalAlignment="Top" Width="34" Click="ButtonRemoveOption_Click"/>
                     <Label Content="Список возможностей" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
                     <Label Content="Задействовать" HorizontalAlignment="Left" Margin="431,168,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="ButtonLaunch" Content="Пуск" HorizontalAlignment="Left" Margin="694,132,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
+                    <Button x:Name="ButtonLaunch" Content="Пуск" HorizontalAlignment="Left" Margin="694,132,0,0" VerticalAlignment="Top" Height="24" Width="90" Click="ButtonLaunch_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Опции">
